@@ -39,6 +39,11 @@ window._wpGutenbergPost = {
 			'<!-- wp:core/embed url:https://www.youtube.com/watch?v=Nl6U7UotA-M -->',
 			'<iframe width="560" height="315" src="//www.youtube.com/embed/Nl6U7UotA-M" frameborder="0" allowfullscreen></iframe>',
 			'<!-- /wp:core/embed -->',
+
+			'<!-- wp:core/tinymce -->',
+			'<p>A "core/tinymce" block using <strong>TinyMCE inlite</strong> theme.</p><ul><li>Double-click a word to see the inline menu</li><li>Right-click to see the context menu</li><li>Hit enter to see the insert menu</li></ul><table border="1"><tr><td>A table</td><td>cell r0c1</td></tr><tr><td>cell r1 c0</td><td>cell r1c1</td></tr></table><blockquote>A quote</blockquote><p>and some final text.</p>',
+			'<!-- /wp:core/tinymce -->',
+
 		].join( '' ),
 	},
 };
