@@ -54,6 +54,10 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
+#: blocks/library/tinymce/index.js:10
+msgid "TinyMCE"
+msgstr ""
+
 #: editor/components/inserter/index.js:37
 msgid "Insert block"
 msgstr ""
