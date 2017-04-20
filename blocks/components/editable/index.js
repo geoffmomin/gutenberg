@@ -10,6 +10,7 @@ import { Parser as HtmlToReactParser } from 'html-to-react';
  */
 import './style.scss';
 
+const KEYCODE_BACKSPACE = 8;
 const htmlToReactParser = new HtmlToReactParser();
 const formatMap = {
 	strong: 'bold',
@@ -27,6 +28,7 @@ export default class Editable extends wp.element.Component {
 		this.bindNode = this.bindNode.bind( this );
 		this.onFocus = this.onFocus.bind( this );
 		this.onNodeChange = this.onNodeChange.bind( this );
+		this.onKeyDown = this.onKeyDown.bind( this );
 		this.formats = {};
 	}
 
@@ -57,7 +59,7 @@ export default class Editable extends wp.element.Component {
 		editor.on( 'focusout', this.onChange );
 		editor.on( 'NewBlock', this.onNewBlock );
 		editor.on( 'focusin', this.onFocus );
-
+		editor.on( 'keydown', this.onKeyDown );
 		if ( this.props.onFormatChange ) {
 			editor.on( 'nodechange', this.onNodeChange );
 		}
@@ -84,6 +86,32 @@ export default class Editable extends wp.element.Component {
 
 		this.editor.save();
 		this.props.onChange( this.getContent() );
+	}
+
+	isStartOfEditor() {
+		const range = this.editor.selection.getRng();
+		if ( range.startOffset !== 0 || ! range.collapsed ) {
+			return false;
+		}
+		const start = range.startContainer;
+		const body = this.editor.getBody();
+		let element = start;
+		do {
+			const child = element;
+			element = element.parentNode;
+			if ( element.childNodes[ 0 ] !== child ) {
+				return false;
+			}
+		} while ( element !== body );
+		return true;
+	}
+
+	onKeyDown( event ) {
+		if ( this.props.onMerge && event.keyCode === KEYCODE_BACKSPACE && this.isStartOfEditor() ) {
+			event.preventDefault();
+			this.onChange();
+			this.props.onMerge( this.editor.getContent() );
+		}
 	}
 
 	onNewBlock() {
