@@ -54,7 +54,7 @@ msgstr ""
 msgid "Text"
 msgstr ""
 
-#: blocks/library/tinymce/index.js:10
+#: blocks/library/tinymce/index.js:11
 msgid "TinyMCE"
 msgstr ""
 

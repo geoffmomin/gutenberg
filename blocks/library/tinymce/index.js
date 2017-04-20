@@ -1,6 +1,7 @@
 /**
  * Internal dependencies
  */
+import './style.scss';
 import { registerBlock, query } from '../../api';
 import Editable from '../../components/tinymce';
 
@@ -23,7 +24,7 @@ registerBlock( 'core/tinymce', {
 		const { content, align } = attributes;
 		return (
 			<Editable
-				className="tinymce"
+				className="blocks-tinymce"
 				tagName="div"
 				value={ content }
 				onChange={ ( value ) => setAttributes( { content: value } ) }

@@ -1,0 +1,13 @@
+@import '../list/style';
+@import '../quote/style';
+
+.blocks-tinymce {
+  ol, ul {
+    @extend .blocks-list;
+  }
+  blockquote {
+    @extend .blocks-quote;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+}
