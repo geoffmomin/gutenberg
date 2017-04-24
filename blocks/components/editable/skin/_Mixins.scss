@@ -1,0 +1,56 @@
+// Mixins
+
+@mixin opacity($opacity) {
+	opacity: $opacity;
+	$opacityie: $opacity * 100;
+	filter: alpha(opacity=#{$opacityie});
+	zoom: 1;
+}
+
+@mixin vertical-gradient($startColor, $endColor) {
+	@if ($has-gradients == true) {
+		background-color: mix($startColor, $endColor, 60%);
+		background-image: -moz-linear-gradient(top, $startColor, $endColor); // FF 3.6+
+		background-image: -webkit-gradient(linear, 0 0, 0 100%, from($startColor), to($endColor)); // Safari 4+, Chrome 2+
+		background-image: -webkit-linear-gradient(top, $startColor, $endColor); // Safari 5.1+, Chrome 10+
+		background-image: -o-linear-gradient(top, $startColor, $endColor); // Opera 11.10
+		background-image: linear-gradient(to bottom, $startColor, $endColor); // Standard, IE10
+		background-repeat: repeat-x;
+		filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#{ie-hex-str($startColor)}', endColorstr='#{ie-hex-str($endColor)}', GradientType=0);
+		zoom: 1;
+	} @else {
+		background-color: mix($startColor, $endColor, 60%);
+	}
+}
+
+@mixin border-radius($radius) {
+	@if ($has-radius == true) {
+		-webkit-border-radius: $radius;
+		-moz-border-radius: $radius;
+		border-radius: $radius;
+	}
+}
+
+@mixin box-shadow($shadows...) {
+	@if ($has-boxshadow == true) {
+		-webkit-box-shadow: $shadows;
+		-moz-box-shadow: $shadows;
+		box-shadow: $shadows;
+	}
+}
+
+@mixin transition($transition) {
+	-webkit-transition: $transition;
+	transition: $transition;
+}
+
+@mixin inline-block() {
+	display: inline-block;
+	*display: inline;
+	*zoom: 1;
+}
+
+@mixin reset-gradient() {
+	filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+	background: transparent;
+}

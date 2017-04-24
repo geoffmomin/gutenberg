@@ -21,10 +21,16 @@ export default class Editable extends wp.element.Component {
 		this.initialize();
 	}
 
+	dummySkin() {
+		let pluginUrl = '/wp-content/plugins/gutenberg'; //TODO get from php
+		return pluginUrl + '/blocks/components/editable/skin/dummy';
+	}
+
 	initialize() {
 		const config = {
 			target: this.node,
 			theme: false,
+			skin_url: this.dummySkin(),
 			inline: true,
 			toolbar: false,
 			browser_spellcheck: true,

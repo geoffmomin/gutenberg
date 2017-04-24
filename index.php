@@ -46,6 +46,10 @@ function gutenberg_register_scripts() {
 	wp_register_script( 'wp-element', plugins_url( 'element/build/index.js', __FILE__ ), array( 'react', 'react-dom', 'react-dom-server' ) );
 	wp_register_script( 'wp-blocks', plugins_url( 'blocks/build/index.js', __FILE__ ), array( 'wp-element', 'tinymce-nightly' ) );
 	wp_register_style( 'wp-blocks', plugins_url( 'blocks/build/style.css', __FILE__ ) );
+
+	// Dummy skin
+	wp_register_style( 'wp-skin-ui', plugins_url( 'blocks/components/editable/skin/dummy/skin.min.css', __FILE__) );
+	wp_register_style( 'wp-skin-content', plugins_url( 'blocks/components/editable/skin/dummy/content.inline.min.css', __FILE__) );
 }
 add_action( 'init', 'gutenberg_register_scripts' );
 

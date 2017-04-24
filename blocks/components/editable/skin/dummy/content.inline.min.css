@@ -1,0 +1,8 @@
+/* 
+This is a dummy file. 
+The real TinyMCE skin will be included on the page directly before the editor 
+is loaded.
+Ideally TinyMCE should allow us to skip loading the skin by setting the skin 
+(or skin_url) to false but the current implementation does not do that and
+instead loads the default skin if we do not specify a URL.
+*/
